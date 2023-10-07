@@ -2,7 +2,7 @@
 ///<reference path="node_modules/@types/chai/index.d.ts"/>
 ///<reference path="node_modules/@types/mocha/index.d.ts"/>
 
-import {Gulpclass, Task, SequenceTask, MergedTask} from "gulpclass";
+import {Gulpclass, MergedTask, SequenceTask, Task} from "gulpclass";
 
 const fs = require("fs");
 const gulp = require("gulp");
@@ -12,6 +12,7 @@ const replace = require("gulp-replace");
 const rename = require("gulp-rename");
 const sourcemaps = require("gulp-sourcemaps");
 const ts = require("gulp-typescript");
+const packageJson = require("./package.json");
 
 @Gulpclass()
 export class Gulpfile {
@@ -117,15 +118,16 @@ export class Gulpfile {
                 "cd ./build/package && npm publish"
             ]));
     }
-    
+
     /**
      * Packs a .tgz from ./build/package directory.
      */
     @Task()
     packagePack() {
+        const name = packageJson.name.replace('@', '').replace('/', '-');
         return gulp.src("package.json", { read: false })
             .pipe(shell([
-                "cd ./build/package && npm pack && mv -f typeorm-*.tgz .."
+                `cd ./build/package && npm pack && mv -f ${name}-*.tgz ..`
             ]));
     }
 

@@ -1,10 +1,11 @@
 import { AbstractSqliteDriver } from "../sqlite-abstract/AbstractSqliteDriver"
+import { Buffer } from 'buffer';
+import { ColumnType } from "../types/ColumnTypes"
+import { DataSource } from "../../data-source/DataSource"
+import { DriverPackageNotInstalledError } from "../../error/DriverPackageNotInstalledError"
 import { NativescriptConnectionOptions } from "./NativescriptConnectionOptions"
 import { NativescriptQueryRunner } from "./NativescriptQueryRunner"
 import { QueryRunner } from "../../query-runner/QueryRunner"
-import { DataSource } from "../../data-source/DataSource"
-import { DriverPackageNotInstalledError } from "../../error/DriverPackageNotInstalledError"
-import { ColumnType } from "../types/ColumnTypes"
 import { ReplicationMode } from "../types/ReplicationMode"
 
 /**

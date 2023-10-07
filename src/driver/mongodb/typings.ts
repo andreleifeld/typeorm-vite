@@ -21,13 +21,15 @@ import {
     deserialize,
     serialize,
 } from "./bson.typings"
+import { EventEmitter, Readable } from "../../platform/PlatformTools"
+
+import { Buffer } from 'buffer';
 import type { ConnectionOptions as ConnectionOptions_2 } from "tls"
 import type { Socket } from "net"
 import type { SrvRecord } from "dns"
-import type { TcpNetConnectOpts } from "net"
 import type { TLSSocket } from "tls"
 import type { TLSSocketOptions } from "tls"
-import { Readable, EventEmitter } from "../../platform/PlatformTools"
+import type { TcpNetConnectOpts } from "net"
 
 /** @public */
 export declare abstract class AbstractCursor<

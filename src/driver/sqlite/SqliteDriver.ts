@@ -1,15 +1,17 @@
+import { filepathToName, isAbsolute } from "../../util/PathUtils"
+
+import { AbstractSqliteDriver } from "../sqlite-abstract/AbstractSqliteDriver"
+import { Buffer } from 'buffer';
+import { ColumnType } from "../types/ColumnTypes"
+import { DataSource } from "../../data-source/DataSource"
+import { DriverPackageNotInstalledError } from "../../error/DriverPackageNotInstalledError"
+import { PlatformTools } from "../../platform/PlatformTools"
+import { QueryRunner } from "../../query-runner/QueryRunner"
+import { ReplicationMode } from "../types/ReplicationMode"
+import { SqliteConnectionOptions } from "./SqliteConnectionOptions"
+import { SqliteQueryRunner } from "./SqliteQueryRunner"
 import mkdirp from "mkdirp"
 import path from "path"
-import { DriverPackageNotInstalledError } from "../../error/DriverPackageNotInstalledError"
-import { SqliteQueryRunner } from "./SqliteQueryRunner"
-import { PlatformTools } from "../../platform/PlatformTools"
-import { DataSource } from "../../data-source/DataSource"
-import { SqliteConnectionOptions } from "./SqliteConnectionOptions"
-import { ColumnType } from "../types/ColumnTypes"
-import { QueryRunner } from "../../query-runner/QueryRunner"
-import { AbstractSqliteDriver } from "../sqlite-abstract/AbstractSqliteDriver"
-import { ReplicationMode } from "../types/ReplicationMode"
-import { filepathToName, isAbsolute } from "../../util/PathUtils"
 
 /**
  * Organizes communication with sqlite DBMS.
